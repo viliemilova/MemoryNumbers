@@ -62,6 +62,12 @@ document.getElementById("5").disabled=true;
 document.getElementById("4").disabled=true;
 }
 }
+
+ document.addEventListener("keydown", function(event) 
+{
+ if(document.getElementById("1").disabled==false) return;
+ if (event.key == "Enter") check();
+});
 </script>
 </body>
 </html>
