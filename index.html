@@ -1,0 +1,67 @@
+<html>
+<title>Игра за запомняне</title>
+<body style="background-color: lime">
+<h1 style="text-align: center">
+Напиши показаните числа в правилния ред
+</h1>
+<br>
+<button id=1 style="width: 200; font-size: 30" onclick="start()">
+С Т А Р Т</button>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<label id=2 style="font-size: 30">Ниво: 1</label>
+<br><br><br>
+<label id=3 style="font-size: 30; background-color: yellow"></label>
+<br><br><br>
+<input id=4 type="text" style="font-size: 30; width: 900"
+ placeholder="Въведи твоите числа тук...">
+<button id=5 style="width: 200; font-size: 30" onclick="check()">
+Провери</button>
+
+<script>
+var comp="";
+var level=1;
+var makeNum=function()
+{
+comp="";
+for(var i=0; i<level; i++)
+{
+var n=Math.floor(Math.random()*10);
+comp=comp+n+" ";
+}
+document.getElementById("3").innerHTML=comp;
+setTimeout(f, 500*level);
+document.getElementById("4").value="";
+document.getElementById("4").focus();
+}
+
+var start=function()
+{
+makeNum();
+document.getElementById("1").disabled=true;
+}
+
+var f=function()
+{
+document.getElementById("3").innerHTML="";
+}
+
+var check=function()
+{
+var ans=document.getElementById("4").value;
+if(ans.trim()==comp.trim())
+{
+alert("Вярно!");
+level++;
+document.getElementById("2").innerHTML="Ниво: "+level;
+makeNum();
+}
+else
+{
+alert("Край на играта!");
+document.getElementById("5").disabled=true;
+document.getElementById("4").disabled=true;
+}
+}
+</script>
+</body>
+</html>
